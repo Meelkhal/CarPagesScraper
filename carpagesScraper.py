@@ -129,7 +129,7 @@ def ExtractPageRangeData(bodyType,currentPage,finalPage):
         except Exception:
             break
 
-    table = pd.concat(tableOfData)
+    table = pd.concat(tableOfData,ignore_index=True)
     return table
 
 
