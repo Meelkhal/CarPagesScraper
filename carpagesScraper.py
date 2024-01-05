@@ -39,7 +39,7 @@ def getPrice(car):
         price = None
     return price
 
-def ExtractPageData(currentPage,bodyType):
+def ExtractPageData(bodyType,currentPage):
     # Inputs:
     # website(str) - website of carpages.ca 
     # bodyType(int) - bodyType of vehicle based off of carpages.ca's indices as defined below in bodyTypes dict
