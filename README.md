@@ -11,7 +11,7 @@ Language
 * `Python 3.X`
 * 
 Python Libraries
-* `Plotly`
+* `plotly`
 * `BeautifulSoup`
 * `Pandas`
 * `requests`
