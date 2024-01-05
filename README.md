@@ -1,7 +1,9 @@
 # 🚗 CarScraper
- Project which scrapes car listing data from the website carpages.ca 
+ Project which scrapes car listing data from the website [carpages.ca](https://carpages.ca/) 
  
 ![image](https://github.com/Meelkhal/CarScraper/assets/52140659/5293f032-9c05-468b-bca0-62c64fd2cb1e)
+
+
 
 # Requirements
 Language
@@ -33,14 +35,16 @@ Carpages.ca indexes each body type of a vehicle with an integer known as the cat
 
 If I wanted to scrape all of the data on the first page of the sedan listings as a pandas dataframe, I would type the following command
 ```python
-website = "https://www.carpages.ca/used-cars/search/?num_results=50&category_id=5&p=1"
+from carpagesScraper.py import *
+website = currentPage = 1
 bodyType = 5
-dataTable = ExtractPageData(website,bodyType)
+dataTable = ExtractPageData(bodyType,currentPage)
 ```
 
 ### Ex.2 Getting data for a page range of a given body type
 Lets say, I want all of the data between pages 1-10
 ```python
+from carpagesScraper.py import *
 bodyType = 5
 currentPage = 1
 finalPage = 10
