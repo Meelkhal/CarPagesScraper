@@ -18,9 +18,7 @@ def getMileage(car):
     try:
         mileage = int(mileage.replace(",","")[0:-2])
     except ValueError:
-        # Sometimes posters will put text in place of a mileage so we need to account for error handling using a try statement 
-        pass
-
+        mileage = None
     return mileage
 
 def getPrice(car):
@@ -37,11 +35,11 @@ def getPrice(car):
     price = price.replace(",","")
     try:
         price = float(price)
-    except:
-        ValueError
+    except ValueError:
+        price = None
     return price
 
-def ExtractPageData(website,bodyType):
+def ExtractPageData(currentPage,bodyType):
     # Inputs:
     # website(str) - website of carpages.ca 
     # bodyType(int) - bodyType of vehicle based off of carpages.ca's indices as defined below in bodyTypes dict
@@ -62,6 +60,7 @@ def ExtractPageData(website,bodyType):
         8:"Van/Minivan",
         9:"Pickup Truck"}
 
+    website = "https://www.carpages.ca/used-cars/search/?num_results=50&category_id="+str(bodyType)+"&p="+str(currentPage)
     response = requests.get(website)
     status = response.status_code
     soup = BeautifulSoup(response.content,'html.parser')
@@ -123,13 +122,13 @@ def ExtractPageRangeData(bodyType,currentPage,finalPage):
 
     while currentPage <= finalPage:
         try:
-            website = "https://www.carpages.ca/used-cars/search/?num_results=50&category_id="+str(bodyType)+"&p="+str(currentPage)
-            tableOfData.append(ExtractPageData(website,bodyType))
+            tableOfData.append(ExtractPageData(currentPage,bodyType))
             currentPage += 1
         except Exception:
             break
 
     table = pd.concat(tableOfData,ignore_index=True)
     return table
+
 
 
