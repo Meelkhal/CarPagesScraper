@@ -36,7 +36,7 @@ Carpages.ca indexes each body type of a vehicle with an integer known as the cat
 If I wanted to scrape all of the data on the first page of the sedan listings as a pandas dataframe, I would type the following command
 ```python
 from carpagesScraper.py import *
-website = currentPage = 1
+currentPage = 1
 bodyType = 5
 dataTable = ExtractPageData(bodyType,currentPage)
 ```
