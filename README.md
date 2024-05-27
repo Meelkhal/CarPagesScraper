@@ -1,9 +1,11 @@
 # 🚗 CarScraper
- Project which scrapes car listing data from the website [carpages.ca](https://carpages.ca/) 
+ Project which scrapes car listing data from the websites [carpages.ca](https://carpages.ca/) and
+ [autotrader.ca](https://www.autotrader.ca/)
  
 ![image](https://github.com/Meelkhal/CarScraper/assets/52140659/5293f032-9c05-468b-bca0-62c64fd2cb1e)
 
-
+# UPDATED 05-27-2024
+* Created scraper object from the carpages and autotrader scraper scripts
 
 # Requirements
 Language
@@ -11,43 +13,28 @@ Language
 * `Python 3.X`
 * 
 Python Libraries
-* `plotly`
+* `Selenium`
 * `BeautifulSoup`
 * `Pandas`
-* `requests`
 
 # How to Use
 
-Save the `carpagesScraper.py` file and make sure that the above libraries with an appropriate version of python is installed.
+Save the 'carscraper' directory and make sure that the above libraries with an appropriate version of python is installed.
 
-### Ex.1 Getting data from the first page of a given body type
-
-Carpages.ca indexes each body type of a vehicle with an integer known as the category_id
-
-* 1 Convertable
-* 2 Coupe
-* 3 Hatchback
-* 4 Hybrid/Electric
-* 5 Sedan
-* 6 SUV
-* 7 Crossover
-* 8 Van/Minivan
-* 9 Pickup Truck
-
-If I wanted to scrape all of the data on the first page of the sedan listings as a pandas dataframe, I would type the following command
+## Ex.1 Getting sedan data from autotrader from the first 2 pages
 ```python
-from carpagesScraper.py import *
-currentPage = 1
-bodyType = 5
-dataTable = ExtractPageData(bodyType,currentPage)
+from scraper.py import *
+scraper = carScraper("chromedriver.exe","autotrader")
+scraper.extractHtmlData("sedan",2)
+scraper.getPageData()
+scraper.save_to_csv("data.csv")
 ```
 
-### Ex.2 Getting data for a page range of a given body type
-Lets say, I want all of the data between pages 1-10
+### Ex.2 Getting sedan data from carpages.ca from the first 5 pages
 ```python
-from carpagesScraper.py import *
-bodyType = 5
-currentPage = 1
-finalPage = 10
-dataTable = ExtractPageRangeData(bodyType,currentPage,finalPage)
+from scraper.py import *
+scraper = carScraper("chromedriver.exe","carpages")
+scraper.extractHtmlData("sedan",5)
+scraper.getPageData()
+scraper.save_to_csv("data.csv")
 ```
