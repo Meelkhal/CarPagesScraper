@@ -4,6 +4,10 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
 
+# SQL LIBRARIES
+import sqlite3
+import sqlalchemy
+
 # DATA SCIENCE LIBRARIES
 import pandas as pd
 
@@ -81,10 +85,11 @@ class carScraper:
         elif self.page == "autotrader":
             self.data = AT.scrapePageData(self.bodyType,self.pageData)
 
-    def save_to_csv(self,name):
+    def savetoCsv(self,name):
         # Saves the data to a csv file
         self.data.to_csv(name)
 
-    def save_to_xlsx(self,name):
+    def savetoXlsx(self,name):
         # Saves the data to an excel file
         self.data.to_excel(name)
+
