@@ -14,9 +14,11 @@ Language
 * `Python 3.X`
 * 
 Python Libraries
-* `Selenium`
-* `BeautifulSoup`
-* `Pandas`
+* `selenium`
+* `bs4`
+* `pandas`
+* `sqlite3`
+* `sqlalchemy`
 
 # How to Use
 
